@@ -18,12 +18,15 @@
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
-
+const infuraKey = "6bb910e943dc4083837bf632752601ca";
+//
+// const fs = require('fs');
+const mnemonic = "conduct conduct apology avoid enlist include empty police train journey bonus remove";
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -47,7 +50,14 @@ module.exports = {
       port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
      },
-
+     rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
+      network_id: 4 ,       // Ropsten's id
+      gas: 4500000,        // Ropsten has a lower block limit than mainnet
+     // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+    //  skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+      },
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port

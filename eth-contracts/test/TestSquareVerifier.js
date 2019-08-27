@@ -5,3 +5,38 @@
 
     
 // Test verification with incorrect proof
+var proofs = require("../../zokrates/code/square/proof.json");
+var Verifier = artifacts.require('Verifier');
+contract('Verifier', accounts => {
+
+    const account_one = accounts[0];
+    const account_two = accounts[1];
+    const account_three = accounts[2];
+    const account_four = accounts[3];
+
+    describe('Testing Verifier', function () {
+        beforeEach(async function () { 
+            this.contract = await Verifier.new({from: account_one});
+        });
+
+        it("trying Verifier.verifyTx with good data", async function () { 
+            let proof = proofs.proof;
+            let input = proofs.inputs;
+            let result = await this.contract.verifyTx.call(proof.a,proof.b,proof.c,input)
+            assert.equal(result,true,"check the inputs");
+
+        });
+        it("trying Verifier.verifyTx with bad data", async function () { 
+            let proof = proofs.proof;
+            let input = proofs.inputs;
+            // changed the inputs to a random number
+            let result = await this.contract.verifyTx.call(proof.a,proof.b,proof.c,["0x0000000000000000000000000000000000000000000000000000000000000011", "0x0000000000000000000000000000000000000000000000000000000000000022"])
+            assert.equal(result,false,"check the inputs");
+
+        });
+
+    })
+
+
+})
+
