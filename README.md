@@ -12,3 +12,4 @@ The capstone will build upon the knowledge you have gained in the course in orde
 * [Interactive zero knowledge 3-colorability demonstration](http://web.mit.edu/~ezyang/Public/graph/svg.html)
 * [Docker](https://docs.docker.com/install/)
 * [ZoKrates](https://github.com/Zokrates/ZoKrates)
+* [address for the items](https://rinkeby.opensea.io/assets/0xb0d189a1f1cba24d32ed619519d6eeb2bbfd5352/0)

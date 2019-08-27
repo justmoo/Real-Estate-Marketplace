@@ -23,11 +23,14 @@ contract('SolnSquareVerifier', accounts => {
         })
 
         it("can mint", async function () { 
-    
+            
             let proof = proofs.proof;
             let input = proofs.inputs;
+            
             let result = await this.contract.mintNFT.call(account_one,1,proof.a,proof.b,proof.c,input,{from:account_one});
-        
+
+            
+            
             assert.equal(result,true,"the mint function isn't working");
         });
 
