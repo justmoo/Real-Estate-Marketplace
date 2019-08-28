@@ -28,10 +28,12 @@ contract('SolnSquareVerifier', accounts => {
             let input = proofs.inputs;
             
             let result = await this.contract.mintNFT.call(account_one,1,proof.a,proof.b,proof.c,input,{from:account_one});
+            let result2 = await this.contract.mintNFT.call(account_one,1,proof.a,proof.b,proof.c,input,{from:account_one});
 
-            
-            
-            assert.equal(result,true,"the mint function isn't working");
+
+            console.log(result);
+            console.log(result2);
+           assert.equal(result,true,"the mint function isn't working");
         });
 
         it("ERC721 token can be minted for contract", async function () { 
